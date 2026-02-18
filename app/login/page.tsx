@@ -6,6 +6,9 @@ export default function LoginPage() {
   const handleGoogleLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
+      options: {
+    redirectTo: "https://smart-bookmark-8mfcm403a-hitesh-mahtos-projects-a7c8483a.vercel.app/",
+  },
     })
 
     if (error) {
