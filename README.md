@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Smart Bookmark App
 
-## Getting Started
+A simple bookmark manager built with Next.js, Supabase, and Tailwind CSS. Users can log in using Google, add bookmarks, view them in real-time, and delete them. Bookmarks are private to each user.
 
-First, run the development server:
+Tech Stack
 
-```bash
+Frontend: Next.js (App Router) + Tailwind CSS
+
+Backend / Database: Supabase (Auth, Database, Realtime)
+
+Authentication: Google OAuth
+
+Deployment: Vercel
+
+Features :-
+
+1. Login via Google OAuth (no email/password).
+
+2. Add bookmarks with a title and URL.
+
+3. View only your own bookmarks; user data is private.
+
+4. Real-time updates: bookmarks added or deleted in one tab reflect immediately in another.
+
+5. Delete bookmarks you no longer need.
+
+
+Setup
+
+1. Clone the repository:
+
+git clone https://github.com/HITESH1603/smart-bookmark-app.git
+cd smart-bookmark-app
+
+
+2. Install dependencies:
+
+npm install
+
+
+
+3. Create a .env.local file and add your Supabase credentials:
+
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+
+
+4. Run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Challenges Faced :-
 
-## Learn More
+1. Understanding Supabase Auth: Setting up Google login and managing sessions was initially confusing. Learned how to use supabase.auth.getUser() to manage the current user.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Row Level Security (RLS): Ensuring that users can only access their own bookmarks required creating policies in Supabase. It took some trial and error to get SELECT, INSERT, and DELETE policies correct.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Real-time updates: Implementing realtime subscriptions with supabase.channel was new to me. Had to figure out how to fetch bookmarks whenever changes happen.
