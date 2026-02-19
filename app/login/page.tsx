@@ -8,7 +8,13 @@ export default function LoginPage() {
   const router = useRouter()
 
   const handleGoogleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: "google" })
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "https://smart-bookmark-oelmy2lc2-hitesh-mahtos-projects-a7c8483a.vercel.app/dashboard",
+      },
+    })
+
     if (error) console.error("Google login error:", error.message)
   }
 
