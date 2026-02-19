@@ -19,7 +19,6 @@ export default function Dashboard() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
   const router = useRouter()
 
-  // Get current user
   useEffect(() => {
     const getUser = async () => {
       const { data } = await supabase.auth.getUser()
@@ -33,7 +32,7 @@ export default function Dashboard() {
     getUser()
   }, [])
 
-  // Fetch bookmarks
+ 
   const fetchBookmarks = async () => {
     const { data, error } = await supabase
       .from("bookmarks")
@@ -45,7 +44,6 @@ export default function Dashboard() {
     }
   }
 
-  // Add bookmark
   const addBookmark = async () => {
     if (!title || !url || !user) return
 
@@ -67,7 +65,7 @@ export default function Dashboard() {
     }
   }
 
-  // Delete bookmark
+
   const deleteBookmark = async (id: number) => {
     const { error } = await supabase.from("bookmarks").delete().eq("id", id)
     if (!error) {
@@ -75,7 +73,7 @@ export default function Dashboard() {
     }
   }
 
-  // Realtime subscription
+  
   useEffect(() => {
     const channel = supabase
       .channel("bookmarks-changes")
@@ -101,7 +99,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center p-6">
       <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-8">
-        {/* Header */}
+        
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">
             Smart Bookmark Manager
@@ -114,7 +112,7 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Add Bookmark Form */}
+        {}
         <div className="mb-8 space-y-4">
           <input
             type="text"
@@ -138,7 +136,7 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Bookmark List */}
+        {}
         <div className="space-y-4">
           {bookmarks.length === 0 && (
             <p className="text-gray-500 text-center">

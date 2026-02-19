@@ -18,12 +18,12 @@ export default function LoginPage() {
     if (error) console.error("Google login error:", error.message)
   }
 
-  // When user returns from Supabase OAuth, check session
+  
   useEffect(() => {
     const checkSession = async () => {
       const { data } = await supabase.auth.getSession()
       if (data.session) {
-        router.push("/dashboard") // send logged-in user to dashboard
+        router.push("/dashboard") 
       }
     }
     checkSession()
