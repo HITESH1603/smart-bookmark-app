@@ -2,6 +2,8 @@ Smart Bookmark App
 
 A simple bookmark manager built with Next.js, Supabase, and Tailwind CSS. Users can log in using Google, add bookmarks, view them in real-time, and delete them. Bookmarks are private to each user.
 
+Live Demo :-  [https://smart-bookmark-app-nu-liart.vercel.app](https://smart-bookmark-app-nu-liart.vercel.app) 
+
 Tech Stack
 
 Frontend: Next.js (App Router) + Tailwind CSS
